@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "extensions": [
+    {
+      "id": "word-count",
+      "name": "Word Count",
+      "description": "Shows word count, character count, and reading time in the status bar for the active file.",
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "icon": "#",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/word-count.js",
+      "categories": ["editor", "status-bar"]
+    }
+  ]
+}
