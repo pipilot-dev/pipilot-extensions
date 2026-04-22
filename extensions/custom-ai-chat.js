@@ -10,7 +10,7 @@
 //
 // Configuration: set your provider in the CONFIG object below.
 
-(function (PiPilot, bus, api, state) {
+(function (PiPilot, bus, api, state, db) {
 
   // ═══════════════════════════════════════════════════════════
   // CONFIGURATION — change these to use your preferred provider
@@ -199,18 +199,33 @@
   var messages = [];
   var isStreaming = false;
 
-  var cachedApiKey = CONFIG.apiKey || localStorage.getItem('ext:custom-ai-chat:apiKey') || '';
-
-  function getApiKey() {
-    if (cachedApiKey) return cachedApiKey;
-    var stored = localStorage.getItem('ext:custom-ai-chat:apiKey');
-    if (stored) { cachedApiKey = stored; return stored; }
-    return null;
+  // Load chat history from SQLite
+  if (db) {
+    db.get('messages').then(function (saved) {
+      if (Array.isArray(saved)) messages = saved;
+    });
   }
 
-  function saveApiKey(key) {
+  function saveMessages() {
+    if (db) db.set('messages', messages).catch(function () {});
+  }
+
+  var cachedApiKey = CONFIG.apiKey || '';
+
+  // Load API key from SQLite on init
+  if (db) {
+    db.get('apiKey').then(function (key) {
+      if (key && !cachedApiKey) cachedApiKey = key;
+    });
+  }
+
+  function getApiKey() {
+    return cachedApiKey || null;
+  }
+
+  async function saveApiKey(key) {
     cachedApiKey = key;
-    localStorage.setItem('ext:custom-ai-chat:apiKey', key);
+    if (db) await db.set('apiKey', key);
   }
 
   async function promptApiKey() {
@@ -220,7 +235,7 @@
       placeholder: 'sk-...',
     });
     if (key && key.trim()) {
-      saveApiKey(key.trim());
+      await saveApiKey(key.trim());
       return key.trim();
     }
     return null;
@@ -334,6 +349,7 @@
       if (fullContent) {
         messages.push({ role: 'assistant', content: fullContent });
       }
+      saveMessages();
       onDone(null);
 
     } catch (err) {
@@ -513,6 +529,7 @@
       }
 
       messages.push({ role: 'user', content: text });
+      saveMessages();
       input.value = '';
       input.style.height = 'auto';
       renderMessages();
@@ -558,6 +575,7 @@
     var clearBtn = wrap.querySelector('#ext-chat-clear');
     if (clearBtn) clearBtn.addEventListener('click', function () {
       messages = [];
+      saveMessages();
       renderMessages();
     });
 
@@ -589,4 +607,4 @@
 
   console.log('[ext:custom-ai-chat] ' + CONFIG.name + ' extension loaded (' + CONFIG.model + ')');
 
-})(PiPilot, bus, api, state);
+})(PiPilot, bus, api, state, db);
