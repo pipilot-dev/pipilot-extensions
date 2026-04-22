@@ -199,11 +199,18 @@
   var messages = [];
   var isStreaming = false;
 
+  var cachedApiKey = CONFIG.apiKey || localStorage.getItem('ext:custom-ai-chat:apiKey') || '';
+
   function getApiKey() {
-    if (CONFIG.apiKey) return CONFIG.apiKey;
+    if (cachedApiKey) return cachedApiKey;
     var stored = localStorage.getItem('ext:custom-ai-chat:apiKey');
-    if (stored) return stored;
+    if (stored) { cachedApiKey = stored; return stored; }
     return null;
+  }
+
+  function saveApiKey(key) {
+    cachedApiKey = key;
+    localStorage.setItem('ext:custom-ai-chat:apiKey', key);
   }
 
   async function promptApiKey() {
@@ -212,9 +219,9 @@
       label: 'Enter your API key for ' + CONFIG.baseUrl,
       placeholder: 'sk-...',
     });
-    if (key) {
-      localStorage.setItem('ext:custom-ai-chat:apiKey', key);
-      return key;
+    if (key && key.trim()) {
+      saveApiKey(key.trim());
+      return key.trim();
     }
     return null;
   }
