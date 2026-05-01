@@ -467,6 +467,36 @@
       "version": "1.0.0",
       "author": "PiPilot",
       "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/themes/theme-monokai-pro.js"
+    },
+    {
+      "id": "font-geist-mono",
+      "name": "Geist Mono",
+      "description": "Modern, technical monospace from Vercel's Geist type system. Lazy-loaded from Google Fonts.",
+      "icon": "Aa",
+      "categories": ["fonts"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/fonts/font-geist-mono.js"
+    },
+    {
+      "id": "font-comic-mono",
+      "name": "Comic Mono",
+      "description": "A monospaced Comic Sans — surprisingly readable, weirdly fun for casual sessions.",
+      "icon": "✎",
+      "categories": ["fonts"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/fonts/font-comic-mono.js"
+    },
+    {
+      "id": "font-monaspace-neon",
+      "name": "Monaspace Neon",
+      "description": "GitHub's modern monospace with texture healing and contextual ligatures.",
+      "icon": "◉",
+      "categories": ["fonts"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/fonts/font-monaspace-neon.js"
     }
   ]
 }
