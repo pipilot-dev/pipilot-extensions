@@ -417,6 +417,56 @@
         "terminal",
         "productivity"
       ]
+    },
+    {
+      "id": "theme-tokyo-night",
+      "name": "Tokyo Night",
+      "description": "Dark theme inspired by the colors of downtown Tokyo at night.",
+      "icon": "🌃",
+      "categories": ["themes"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/themes/theme-tokyo-night.js"
+    },
+    {
+      "id": "theme-nord",
+      "name": "Nord",
+      "description": "Cool, arctic palette inspired by nordtheme.com.",
+      "icon": "❄",
+      "categories": ["themes"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/themes/theme-nord.js"
+    },
+    {
+      "id": "theme-one-dark",
+      "name": "One Dark Pro",
+      "description": "Atom's classic One Dark Pro palette, ported for PiPilot.",
+      "icon": "◐",
+      "categories": ["themes"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/themes/theme-one-dark.js"
+    },
+    {
+      "id": "theme-catppuccin-mocha",
+      "name": "Catppuccin Mocha",
+      "description": "Soothing pastel theme from catppuccin.com — the mocha (darkest) variant.",
+      "icon": "☕",
+      "categories": ["themes"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/themes/theme-catppuccin-mocha.js"
+    },
+    {
+      "id": "theme-monokai-pro",
+      "name": "Monokai Pro",
+      "description": "The classic Monokai palette refined for everyday use.",
+      "icon": "✦",
+      "categories": ["themes"],
+      "version": "1.0.0",
+      "author": "PiPilot",
+      "url": "https://raw.githubusercontent.com/pipilot-dev/pipilot-extensions/main/extensions/themes/theme-monokai-pro.js"
     }
   ]
 }
